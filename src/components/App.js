@@ -1,17 +1,15 @@
 import React, { Component } from "react";
-//import PropTypes from "prop-types";
 
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
-import "./styles/base.scss";
+import "../styles/base.scss";
 
 import imageApi from "../Services/Pixabay-api";
 
 import Container from "./generic/Container";
 import Header from "./Header";
 import Searchbar from "./SearchBar";
-//import ImageInfo from "./ImageInfo";
 import ImageGallery from "./ImageGallery";
 import Notification from "./Notification";
 import Loader from "./Loader";
@@ -124,25 +122,3 @@ export default class App extends Component {
     );
   }
 }
-
-// export default class App extends Component {
-//   state = {
-//     search: "",
-//   };
-
-//   handleFormSubmit = (query) => {
-//     this.setState({ searchQuery: query, page: 1, images: [] });
-//   };
-//   render() {
-//     return (
-//       <Container>
-//         <ToastContainer position="top-center" />
-//         <Header>
-//           <Searchbar onSubmitImageTags={this.handleFormSubmit} />
-//         </Header>
-
-//         <ImageInfo search={this.state.search} />
-//       </Container>
-//     );
-//   }
-// }
