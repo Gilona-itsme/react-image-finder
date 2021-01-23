@@ -9,6 +9,7 @@ const LoadMore = styled.button`
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
   color: #fff;
   border: 0;
   text-decoration: none;
