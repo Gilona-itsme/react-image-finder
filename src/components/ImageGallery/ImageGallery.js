@@ -7,7 +7,7 @@ import styled from "styled-components";
 const BoxGallery = styled.ul`
   display: grid;
   max-width: calc(100vw - 10px);
-
+ padding-inline-start: 0;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-gap: 16px;
   margin-top: 10px;
