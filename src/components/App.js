@@ -12,7 +12,7 @@ import Searchbar from "./SearchBar";
 import ImageFinderInfo from "./ImageFinderInfo";
 export default class App extends Component {
   state = {
-    searchQuery: "",
+    searchQuery: [],
   };
 
   handleFormSubmit = (query) => {
