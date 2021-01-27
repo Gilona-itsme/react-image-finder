@@ -22,15 +22,7 @@ export default class ImageFinderInfo extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.searchQuery !== this.props.searchQuery) {
-      this.fetchImages();
-      this.setState({ images: "", page: 1 });
-    }
-
-    if (this.state.shouldScroll === true) {
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: "smooth",
-      });
+      this.setState({ images: [], page: 1 }, () => this.fetchImages());
     }
   }
 
@@ -44,12 +36,18 @@ export default class ImageFinderInfo extends Component {
     imageApi
       .fetchImagesWithQuery(searchQuery, page)
       .then((images) => {
-        if (images.total !== 0) {
-          this.setState((prevState) => ({
+        this.setState(
+          (prevState) => ({
             images: [...prevState.images, ...images],
             page: prevState.page + 1,
-          }));
-        }
+          }),
+          () => {
+            window.scrollTo({
+              top: document.documentElement.scrollHeight,
+              behavior: "smooth",
+            });
+          }
+        );
       })
       .catch((error) => this.setState({ error }))
       .finally(() => this.setState({ loading: false }));
@@ -57,9 +55,6 @@ export default class ImageFinderInfo extends Component {
   };
 
   handleButton = () => {
-    // this.setState((prevState) => ({
-    //   page: prevState.page + 1,
-    // }));
     this.fetchImages();
 
     if (this.state.page > 1) {
